@@ -21,6 +21,12 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') #sort import on go file save
 
 lua <<EOF
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>d', "<Cmd>call CocAction('jumpDefinition')<CR>", {})
+vim.keymap.set('n', '<leader>bl', "buffers", {})
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -32,3 +38,4 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
