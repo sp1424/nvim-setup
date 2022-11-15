@@ -5,6 +5,7 @@ Plug 'preservim/nerdtree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 colorscheme gruvbox
@@ -23,6 +24,10 @@ autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.org
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 map leader a
 nmap a \
+
+let g:sneak#label = 1
+nmap f <Plug>Sneak_s
+nmap F <Plug>Sneak_S
 
 set number
 set tabstop=4
