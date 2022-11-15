@@ -21,7 +21,11 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') #sort import on go file save
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-nnoremap a \
+map leader a
+nmap a \
+
+set number
+set tabstop=4
 
 lua <<EOF
 local builtin = require('telescope.builtin')
