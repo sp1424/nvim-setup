@@ -20,7 +20,9 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') #sort import on go file save
 
-inorepmap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+map leader a
+nmap a \
 
 lua <<EOF
 local builtin = require('telescope.builtin')
@@ -40,4 +42,5 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
 
