@@ -6,6 +6,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'justinmk/vim-sneak'
+Plug 'sebdah/vim-delve'
 call plug#end()
 
 colorscheme gruvbox
@@ -19,7 +20,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') #sort import on go file save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport') 
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 map leader a
@@ -28,9 +29,11 @@ nmap a \
 let g:sneak#label = 1
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
+nmap z <cmd>noh<CR>
 
 set number
 set tabstop=4
+set shiftwidth=4
 
 lua <<EOF
 local builtin = require('telescope.builtin')
