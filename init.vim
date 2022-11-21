@@ -1,6 +1,5 @@
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -11,7 +10,6 @@ Plug 'leoluz/nvim-dap-go'
 call plug#end()
 
 "custom setup
-colorscheme gruvbox
 map leader a
 nmap a \
 set number
