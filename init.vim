@@ -7,9 +7,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'justinmk/vim-sneak'
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
 "custom setup
+colorscheme tokyonight-storm
 map leader a
 nmap a \
 set number
