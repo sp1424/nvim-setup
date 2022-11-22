@@ -12,8 +12,7 @@ call plug#end()
 
 "custom setup
 colorscheme tokyonight-storm
-map leader a
-nmap a \
+let mapleader = "a"
 set number
 set tabstop=4
 set shiftwidth=4
