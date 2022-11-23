@@ -41,14 +41,14 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 lua require('dap-go').setup()
 
 lua <<EOF
-require("bufferline").setup{}
-
 --telescope key binds
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
---coc keybind
+--coc keybinh
 vim.keymap.set('n', '<leader>d', "<Cmd>call CocAction('jumpDefinition')<CR>", {})
 
 require'nvim-treesitter.configs'.setup {
@@ -61,7 +61,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+require("bufferline").setup{}
 EOF
-
-
+" config recommendation to leave at the bottom
 set guifont=Anonymous\ Pro\ 11
