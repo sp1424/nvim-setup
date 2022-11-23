@@ -7,11 +7,12 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'justinmk/vim-sneak'
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'akinsho/bufferline.nvim'
+Plug 'ryanoasis/vim-devicons' 
 call plug#end()
 
 "custom setup
-colorscheme tokyonight-storm
+colorscheme default 
 let mapleader = "a"
 set number
 set tabstop=4
@@ -20,6 +21,7 @@ nmap z <cmd>noh<CR>
 let g:sneak#label = 1
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
+set termguicolors
 
 "NERD TREE setup:
 " Start NERDTree and put the cursor back in the other window.
@@ -38,6 +40,8 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 lua require('dap-go').setup()
 
 lua <<EOF
+require("bufferline").setup{}
+
 --telescope key binds
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -59,3 +63,4 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
+set guifont=Anonymous\ Pro\ 11
