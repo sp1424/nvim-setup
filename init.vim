@@ -8,11 +8,12 @@ Plug 'justinmk/vim-sneak'
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
 Plug 'akinsho/bufferline.nvim'
-Plug 'ryanoasis/vim-devicons' 
+Plug 'ryanoasis/vim-devicons'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
 "custom setup
-colorscheme default 
+colorscheme catppuccin
 let mapleader = "a"
 set number
 set tabstop=4
