@@ -10,6 +10,7 @@ Plug 'leoluz/nvim-dap-go'
 Plug 'akinsho/bufferline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'princejoogie/dir-telescope.nvim'
 call plug#end()
 
 "custom setup
@@ -41,12 +42,20 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 lua require('dap-go').setup()
 
 lua <<EOF
---telescope key binds
+--telescope config
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+local telescope = require('telescope')
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+telescope.load_extension("dir")
+telescope.setup({
+    defaults = {
+        file_ignore_patterns = { ".git/*"},
+    }
+})
+
 
 --coc keybind
 vim.keymap.set('n', '<leader>d', "<Cmd>call CocAction('jumpDefinition')<CR>", {})
