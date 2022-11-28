@@ -11,6 +11,7 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'princejoogie/dir-telescope.nvim'
+Plug 'numToStr/FTerm.nvim'
 call plug#end()
 
 "custom setup
@@ -71,6 +72,18 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 require("bufferline").setup{}
+
+require'FTerm'.setup({
+    border = 'double',
+    dimensions  = {
+        height = 0.9,
+        width = 0.9,
+    },
+})
+
+vim.keymap.set('n', '<leader>tt', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+
 EOF
 " config recommendation to leave at the bottom
 set guifont=Anonymous\ Pro\ 11
