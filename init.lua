@@ -1,5 +1,5 @@
-require 'plugins/floatterm'
-require 'plugins/treesitter'
+require 'plugins.floatterm'
+require 'plugins.treesitter'
 require 'plugins.nerdtree'
 
 local Plug = vim.fn['plug#']
@@ -19,6 +19,7 @@ Plug('neoclide/coc.nvim', {
 Plug('Rigellute/shades-of-purple.vim')
 Plug('preservim/nerdtree')
 Plug('ryanoasis/vim-devicons')
+Plug('nvim-telescope/telescope.nvim')
 
 vim.call('plug#end')
 
@@ -37,6 +38,10 @@ vim.api.nvim_command('inoremap <silent><expr> <ESC> coc#pum#visible() ? coc#pum#
 vim.keymap.set('n', 'gd', '<Plug>(coc-definition)')
 vim.keymap.set('n', 'gr', '<Plug>(coc-references)')
 
+vim.cmd [[autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')]]
+vim.cmd [[autocmd BufWritePost * :call CocAction('format')]]
+
 setupTerminal()
 setupTreesitter()
 setupNerdtree()
+--setupTelescope()
